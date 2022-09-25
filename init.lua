@@ -19,6 +19,7 @@ require('packer').startup(function(use)
   use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim'}}
 
   use 'marko-cerovac/material.nvim'
+  use 'ellisonleao/gruvbox.nvim'
 
   if packer_bootstrap then
     require('packer').sync()
@@ -30,6 +31,10 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('i', 'jj', '<esc>', opts)
+
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -61,5 +66,6 @@ require('lspconfig')['rust_analyzer'].setup{
     on_attach = on_attach,
 }
 
-vim.cmd[[colorscheme material]]
-vim.g.material_style = "deep ocean"
+vim.o.background = "dark"
+vim.cmd[[colorscheme gruvbox]]
+
