@@ -1,2 +1,5 @@
 -- Basic Vim option Configurations
-require "options"
+require "default.options"
+
+-- Keybinds 
+require "default.keybinds"
