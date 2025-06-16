@@ -10,4 +10,8 @@ wk.add({
   { "<leader>e", ":NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
   { "gd", vim.lsp.buf.definition, desc = "Go to Definition" },
   { "jk", "<Esc>", desc = "Exit Insert Mode", mode = "i" },
+
+  {"<Tab>", "<Cmd>BufferNext<CR>", desc = "Select next buffer", mode = 'n'},
+  {"<S-Tab>", "<Cmd>BufferPrevious<CR>", desc = "Select previous buffer", mode = 'n'},
+
 })
