@@ -9,6 +9,7 @@ return {
       ensure_installed = {
         "pyright",
         "clangd",
+        "rust_analyzer",
       },
       automatic_installation = true
     })
