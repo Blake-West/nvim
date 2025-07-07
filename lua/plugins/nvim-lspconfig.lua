@@ -21,7 +21,7 @@ return {
       }
     })
     
-    -- ✅ Add clangd configuration for C/C++
+    -- Add clangd configuration for C/C++
     require('lspconfig').clangd.setup({
       capabilities = capabilities,
       cmd = {
@@ -44,6 +44,38 @@ return {
         },
       },
       filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    })
+
+    -- Add Rust configuration
+    require('lspconfig').rust_analyzer.setup({
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          imports = {
+            granularity = {
+              group = "module",
+            },
+            prefix = "self",
+          },
+          cargo = {
+            buildScripts = {
+              enable = true,
+            },
+          },
+          procMacro = {
+            enable = true
+          },
+          checkOnSave = {
+            command = "clippy",  -- Use clippy for linting
+          },
+          inlayHints = {
+            enable = true,
+            showParameterNames = true,
+            parameterHintsPrefix = "<- ",
+            otherHintsPrefix = "=> ",
+          },
+        }
+      }
     })
 
     -- Set up keybindings when LSP attaches
