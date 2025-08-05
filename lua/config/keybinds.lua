@@ -16,3 +16,23 @@ wk.add({
   {"<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Select previous buffer", mode = 'n'},
 
 })
+-- Terminal mappings
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+vim.keymap.set('t', 'jk', [[<C-\><C-n>]], {noremap = true})
+
+-- Multiple named terminal instances (leader+t1 through leader+t5)
+local Terminal = require("toggleterm.terminal").Terminal
+
+-- Create 5 different named terminals
+for i = 1, 5 do
+  local term = Terminal:new({ 
+    count = i,
+    direction = "float",
+    float_opts = {
+      border = "curved",
+    }
+  })
+  
+  -- Set keybinding for each terminal
+  vim.keymap.set({"n", "t"}, "<leader>t"..i, function() term:toggle() end, {noremap = true, silent = true, desc = "Toggle Terminal "..i})
+end
