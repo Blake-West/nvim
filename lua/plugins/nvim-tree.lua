@@ -13,6 +13,11 @@ return {
         enable = true,
         update_cwd = true,
       },
+      actions = {
+        change_dir = {
+          enable = false
+        }
+      },
       view = {
         width = 40,
         preserve_window_proportions = true,
