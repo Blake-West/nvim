@@ -6,6 +6,16 @@ return {
   },
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    -- Suppress the deprecation warning
+    vim.notify = (function()
+      local original_notify = vim.notify
+      return function(msg, level, opts)
+        if msg and type(msg) == "string" and msg:find("lspconfig.*framework.*deprecated") then
+          return
+        end
+        return original_notify(msg, level, opts)
+      end
+    end)()
 
     require("lspconfig").pyright.setup({
       capabilities = capabilities,
