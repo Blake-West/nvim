@@ -14,3 +14,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 5
+
+vim.opt.autoread = true
+
+-- Auto-reload files changed outside of Neovim
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})

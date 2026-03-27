@@ -12,17 +12,12 @@ return {
         insert_mappings = true,
         terminal_mappings = true,
         persist_size = true,
-        direction = 'float', -- or 'horizontal', 'vertical', 'tab'
+        direction = 'horizontal',
         close_on_exit = true,
         shell = vim.o.shell,
-        float_opts = {
-          border = 'curved',
-          winblend = 0,
-          highlights = {
-            border = "Normal",
-            background = "Normal",
-          }
-        }
+        env = {
+          TERM = "xterm-256color",
+        },
       }
     end
   },
