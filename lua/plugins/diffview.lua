@@ -10,6 +10,9 @@ return {
   },
   opts = {
     enhanced_diff_hl = true,
+    file_panel = {
+      listing_style = "tree",
+    },
     view = {
       merge_tool = {
         layout = "diff3_mixed",

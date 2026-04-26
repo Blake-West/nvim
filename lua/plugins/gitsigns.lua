@@ -2,6 +2,12 @@ return {
   "lewis6991/gitsigns.nvim",
   config = function()
     require('gitsigns').setup {
+      on_attach = function(bufnr)
+        local file = vim.api.nvim_buf_get_name(bufnr)
+        if file:match('/%.tmp/') or file:match('/tmp/') then
+          return false
+        end
+      end,
       signs = {
         add          = { text = '┃' },
         change       = { text = '┃' },
